@@ -75,7 +75,7 @@ public class ArticleController {
 		return result;
 	}
 	
-	@RequestMapping("/board_search/{pageNo}")
+	@RequestMapping("/article/board_search/{pageNo}")
 	public Map<String, Object> boardSearch(
 			@PathVariable("pageNo")String pageNo,
 			@RequestParam("keyword")String keyword,
@@ -117,7 +117,7 @@ public class ArticleController {
 		return result;
 	}
 	
-	@RequestMapping("/member_search/{pageNo}")
+	@RequestMapping("/article/member_search/{pageNo}")
 	public String memberSearch(
 			@PathVariable("pageNo")String pageNo,
 			@RequestParam("keyword")String keyword,
@@ -137,7 +137,7 @@ public class ArticleController {
 		return "article/boardSearch.tiles";
 	}
 	
-	@RequestMapping(value="/write", method=RequestMethod.POST)
+	@RequestMapping(value="/article/write", method=RequestMethod.POST)
 	public void write(
 			Model model,
 			String title,
@@ -153,7 +153,7 @@ public class ArticleController {
 		articleService.write(article);
 	}
 	
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	@RequestMapping(value="/article/save", method=RequestMethod.POST)
 	public void save(
 			@RequestBody ArticleVO article
 			) {
@@ -161,7 +161,7 @@ public class ArticleController {
 		articleService.write(article);
 	}
 	
-	@RequestMapping("/read")
+	@RequestMapping("/article/read")
 	public void read(
 			Model model,
 			String code,
@@ -184,7 +184,7 @@ public class ArticleController {
 		model.addAttribute("reply", reply);
 	}
 	
-	@RequestMapping("/reply")
+	@RequestMapping("/article/reply")
 	public void reply(
 			Model model,
 			String id,
@@ -200,7 +200,7 @@ public class ArticleController {
 		articleService.reply(article);
 		model.addAttribute("reply", articleService.selectByGrp(Integer.parseInt(code)));
 	}
-	@RequestMapping("/remove_reply")
+	@RequestMapping("/article/remove_reply")
 	public void removeReply(
 			Model model,
 			String code, String reply) {

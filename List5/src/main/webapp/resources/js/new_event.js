@@ -9,7 +9,7 @@
                      var groupSize = parseInt(data.groupSize);
 
 					 var table = 
-						 	'<span style="margin-left:46%; font-size:4em; color:white">게시판</span>'
+						 	'<span style="margin-left:46%; font-size:4em; color:black">게시판</span>'
 						 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
 						 	+'<table class="event_tab" style="margin-bottom:10px;">'
 							+'<tr style="border-bottom:solid;">'
@@ -48,10 +48,10 @@
 
 			        if (startPage != 1) {
                            pagination +=
-                            '<a href="#five" onclick="newEvent.init(1)">'
+                            '<a href="#temp-inter" onclick="newEvent.init(1)">'
                             + '<IMG SRC="'+ img +'/btn_bf_block.gif">&nbsp;'
                             + '</a>'
-                            + '<a href="#five" onclick="newEvent.init('+(startPage-groupSize)+ ')">'
+                            + '<a href="#temp-inter" onclick="newEvent.init('+(startPage-groupSize)+ ')">'
                             + '<IMG SRC="'+ img +'/btn_bf_page.gif">&nbsp;'
                             + '</a>'
                     }
@@ -62,7 +62,7 @@
                                      '<font style="color:red;font-size: 20px">'+i+ '</font>';
                         } else {
                                pagination +=
-                                     '<a href="#five" onclick="newEvent.init('+i+')">'
+                                     '<a href="#temp-inter" onclick="newEvent.init('+i+')">'
                                     + '<font>'+i+'</font>&nbsp;'
                                     + '</a>';
                        	}
@@ -70,10 +70,10 @@
                       
                     if (lastPage != totalPage) {
                            pagination +=
-                               '<a href="#five" onclick="newEvent.init('+(startPage + groupSize)+ ')">'
+                               '<a href="#temp-inter" onclick="newEvent.init('+(startPage + groupSize)+ ')">'
                                + '<img src="'+ img +'/btn_nxt_page.gif"/> &nbsp;'
                                + '</a>'
-                               + '<a href="#five" onclick="newEvent.init('+(totalPage - ((totalPage-1) % groupSize))+')">'
+                               + '<a href="#temp-inter" onclick="newEvent.init('+(totalPage - ((totalPage-1) % groupSize))+')">'
                                + '<img src="'+ img +'/btn_nxt_block.gif"/> &nbsp;'
                                + '</a>';
                     }
@@ -94,7 +94,7 @@
                     			+ '</div>'
                       table += pagination;
 
-					$("#five").html(table);
+					$("#temp-inter").html(table);
 					
 					// 검색버튼을 클릭하면 다음과 같은내용을 수행
 					$("#traverse").click(function() {
@@ -108,12 +108,7 @@
 					
 					//글쓰기 버튼을 클릭하면
 					$("#write").click(function(e) {
-						if(userid != null){
 							$("#write").attr("data-target","#writeModal");
-						} else {
-							alert("로그인을 먼저 해주세요");
-							$("#write").attr("data-target","");
-						}
 					});
 					
 					// 각각의 글을 클릭하면
@@ -131,7 +126,10 @@
 					});
 				});
 			},
+			
 			//////////////////////////////////////////////
+			
+			
 			search : function(page) {
 				$.ajax(context + "/article/board_search/" + page,{
 					data : {
@@ -140,7 +138,7 @@
 					},
 					dataType : "json",
 					success : function(data) {
-						$("#five").empty(); // 섹션5의 내용을 다비우고 검색용으로 다시그림
+						$("#temp-inter").empty();
 						
 						 var count = data.count;
 	                     var pageNo = parseInt(data.pageNo);
@@ -150,7 +148,7 @@
 	                     var groupSize = parseInt(data.groupSize);
 
 						 var table = 
-							 	'<span style="margin-left:47%; font-size:4em; color:#9c27b0;">EVENT</span>'
+							 	'<span style="font-size:4em; color:BLACK">INTERDATA</span>'
 							 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
 							 	+'<table class="event_tab" style="margin-bottom:10px;">'
 								+'<tr>'
@@ -188,10 +186,10 @@
 
 				        if (startPage != 1) {
 	                           pagination +=
-	                            '<a href="#five" onclick="newEvent.search(1)">'
+	                            '<a href="#temp-inter" onclick="newEvent.search(1)">'
 	                            + '<IMG SRC="'+ img +'/btn_bf_block.gif">&nbsp;'
 	                            + '</a>'
-	                            + '<a href="#five" onclick="newEvent.search('+(startPage-groupSize)+ ')">'
+	                            + '<a href="#temp-inter" onclick="newEvent.search('+(startPage-groupSize)+ ')">'
 	                            + '<IMG SRC="'+ img +'/btn_bf_page.gif">&nbsp;'
 	                            + '</a>'
 	                    }
@@ -202,7 +200,7 @@
 	                                     '<font style="color:red;font-size: 20px">'+i+ '</font>';
 	                        } else {
 	                               pagination +=
-	                                     '<a href="#five" onclick="newEvent.search('+i+')">'
+	                                     '<a href="#temp-inter" onclick="newEvent.search('+i+')">'
 	                                    + '<font>'+i+'</font>&nbsp;'
 	                                    + '</a>';
 	                       	}
@@ -210,10 +208,10 @@
 	                      
 	                    if (lastPage != totalPage) {
 	                           pagination +=
-	                               '<a href="#five" onclick="newEvent.search('+(startPage + groupSize)+ ')">'
+	                               '<a href="#temp-inter" onclick="newEvent.search('+(startPage + groupSize)+ ')">'
 	                               + '<img src="'+ img +'/btn_nxt_page.gif"/> &nbsp;'
 	                               + '</a>'
-	                               + '<a href="#five" onclick="newEvent.search('+(totalPage - ((totalPage-1) % groupSize))+')">'
+	                               + '<a href="#temp-inter" onclick="newEvent.search('+(totalPage - ((totalPage-1) % groupSize))+')">'
 	                               + '<img src="'+ img +'/btn_nxt_block.gif"/> &nbsp;'
 	                               + '</a>';
 	                    }
@@ -234,7 +232,7 @@
 	                    			+ '</div>'
 	                      table += pagination;
 
-						$("#five").html(table);
+						$("#temp-inter").html(table);
 						
 						// 검색버튼을 클릭하면 다음과 같은내용을 수행
 						$("#traverse").click(function() {
@@ -248,11 +246,8 @@
 						
 						//글쓰기 버튼을 클릭하면
 						$("#write").click(function() {
-							if(userid != null){
+							alert('글쓰기 버튼이 클릭')
 								location.href = "#writeModal";
-							} else {
-								alert("로그인을 먼저 해주세요");
-							}
 						});
 						
 						// 각각의 글을 클릭하면

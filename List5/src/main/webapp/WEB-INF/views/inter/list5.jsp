@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-<section class="bg-dark" id="five" style="height:100%; padding-top:5%;">
+<section class="bg-dark" id="temp-inter" style="height:50%; padding-top:2%;">
 </section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
