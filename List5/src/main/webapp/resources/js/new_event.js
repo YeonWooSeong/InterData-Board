@@ -11,7 +11,7 @@
 					 var table = 
 						 	'<span style="margin-left:46%; font-size:4em; color:black">게시판</span>'
 						 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
-						 	+'<table class="event_tab" style="margin-bottom:10px;">'
+						 	+'<table class="inter_tab" style="margin-bottom:10px;">'
 							+'<tr style="border-bottom:solid;">'
 							+'<th style="width:10%;">번호</th>'
 							+'<th style="width:45%;">제목</th>'
@@ -107,7 +107,8 @@
 					});
 					
 					//글쓰기 버튼을 클릭하면
-					$("#write").click(function(e) {
+					$("#write").click(function() {
+						alert('1번째 클릭되는 글쓰기버튼. ')
 							$("#write").attr("data-target","#writeModal");
 					});
 					
@@ -115,12 +116,9 @@
 					$.each(data.list, function(index, value) {
 						$("#read" + arr[index]).click(function() {
 							var bool = false;
-							if (userid != $("#"+this.id).parent().next().text()) {
-								var temp = $("#"+this.id).parent().next().next().next().text();
-								$("#"+this.id).parent().next().next().next().text(parseInt(temp)+1);
-							} else {
+							
 								bool = true;
-							}
+							
 							newEvent.getData(bool,arr[index]);
 						});
 					});
@@ -150,7 +148,7 @@
 						 var table = 
 							 	'<span style="font-size:4em; color:BLACK">INTERDATA</span>'
 							 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
-							 	+'<table class="event_tab" style="margin-bottom:10px;">'
+							 	+'<table class="inter_tab" style="margin-bottom:10px;">'
 								+'<tr>'
 								+'<th style="width:10%;">번호</th>'
 								+'<th style="width:45%;">제목</th>'
@@ -335,5 +333,17 @@
 						});
 					});
 				});
+			},
+			
+			inter_write : function(){
+				
+				var table = ''
+					+''
+					+''
+					
+					
+					
 			}
+			
+			
 	 };
