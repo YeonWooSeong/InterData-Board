@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 public class Command implements Orderable {
 	private String column, keyword; 

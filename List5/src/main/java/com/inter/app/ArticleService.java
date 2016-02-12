@@ -3,7 +3,7 @@ package com.inter.app;
 import java.util.List;
 import java.util.Map;
 
-import com.global.app.Command;
+import com.inter.global.Command;
 
 public interface ArticleService {
 	//CRUD

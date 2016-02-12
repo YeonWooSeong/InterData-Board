@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 public class DatabaseFactory {
 	public static Database getDatabase(Vendor vendor, String id,String pass ){

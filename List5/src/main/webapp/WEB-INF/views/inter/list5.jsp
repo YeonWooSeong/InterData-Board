@@ -9,6 +9,8 @@
 <script type="text/javascript" src="${js}/new_event.js"></script>
 <script>
 $(function(){
+	
 	newEvent.init(1);
+	alert('JS넘어감');
 })
 </script>

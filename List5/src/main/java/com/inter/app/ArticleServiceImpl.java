@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.global.app.Command;
-import com.mapper.app.ArticleMapper;
+import com.inter.global.Command;
+import com.inter.mapper.ArticleMapper;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{

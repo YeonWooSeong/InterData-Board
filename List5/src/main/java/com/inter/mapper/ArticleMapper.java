@@ -1,4 +1,4 @@
-package com.mapper.app;
+package com.inter.mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.inter.app.ArticleVO;
-import com.global.app.Command;
+import com.inter.global.Command;
 @Repository
 public interface ArticleMapper {
 	//CRUD

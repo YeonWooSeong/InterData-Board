@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 
 import org.slf4j.Logger;

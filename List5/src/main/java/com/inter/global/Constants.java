@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 /**
  * @file_name : Constants.java 
  * @author    : coolbeat@naver.com

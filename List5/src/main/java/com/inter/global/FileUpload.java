@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

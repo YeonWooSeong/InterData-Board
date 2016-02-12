@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.inter.app.ArticleMapper">
+ <mapper namespace="com.inter.mapper.ArticleMapper">
  	 <insert id="write" parameterType="com.inter.app.ArticleVO">
  	 <choose>
  	 	<when test="usrName == '관리자'">
@@ -61,7 +61,7 @@
      	ORDER BY RCD_LEVEL DESC, RCD_NO DESC
 	 </select>
 	 
-     <select id="selectAll" parameterType="com.global.app.Command" resultType="com.inter.app.ArticleVO">
+     <select id="selectAll" parameterType="com.inter.global.Command" resultType="com.inter.app.ArticleVO">
      	SELECT
      		RCD_NO AS rcdNo,
      		GRP_NO AS grpNo,
@@ -82,7 +82,7 @@
      	
      </select>
  
-     <select id="selectSomeBy" parameterType="com.global.app.Command" resultType="com.inter.app.ArticleVO">
+     <select id="selectSomeBy" parameterType="com.inter.global.Command" resultType="com.inter.app.ArticleVO">
      	SELECT
      		RCD_NO AS rcdNo,
      		GRP_NO AS grpNo,
@@ -131,13 +131,13 @@
      	WHERE RCD_NO = #{rcdNo}
      </select>
      
-     <select id="countByKeyword" parameterType="com.global.app" resultType="int">
+     <select id="countByKeyword" parameterType="com.inter.global.Command" resultType="int">
      	SELECT COUNT(RCD_NO) FROM BOARD
      	WHERE ${column} LIKE CONCAT('%',#{keyword},'%')
      	AND RCD_LEVEL != 1
      </select>
      
-     <select id="descSelectByKeyword" parameterType="com.global.app.Command" resultType="com.inter.app.ArticleVO">
+     <select id="descSelectByKeyword" parameterType="com.inter.global.Command" resultType="com.inter.app.ArticleVO">
      	SELECT 
      		RCD_NO AS rcdNo,
      		USR_SUBJECT AS usrSubject,
@@ -149,7 +149,7 @@
      	ORDER BY #{rcdNo} DESC	
      </select>
      
-     <update id="update">
+     <update id="update" parameterType="com.inter.app.ArticleVO">
      	UPDATE BOARD SET 
      		USR_MAIL = #{usrMail},
      		USR_SUBJECT = #{usrSubject},

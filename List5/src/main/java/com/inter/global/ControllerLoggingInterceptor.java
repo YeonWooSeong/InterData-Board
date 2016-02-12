@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

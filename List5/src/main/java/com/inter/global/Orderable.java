@@ -1,4 +1,4 @@
-package com.global.app;
+package com.inter.global;
 
 public interface Orderable {
 	public void execute();
