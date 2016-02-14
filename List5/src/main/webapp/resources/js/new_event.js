@@ -108,8 +108,8 @@
 					
 					//글쓰기 버튼을 클릭하면
 					$("#write").click(function() {
-						alert('1번째 클릭되는 글쓰기버튼. ')
-							$("#write").attr("data-target","#writeModal");
+					$("#write").attr("data-target","#writeModal");
+				
 					});
 					
 					// 각각의 글을 클릭하면
@@ -246,6 +246,7 @@
 						$("#write").click(function() {
 							alert('글쓰기 버튼이 클릭')
 								location.href = "#writeModal";
+							
 						});
 						
 						// 각각의 글을 클릭하면
@@ -333,17 +334,10 @@
 						});
 					});
 				});
-			},
-			
-			inter_write : function(){
-				
-				var table = ''
-					+''
-					+''
-					
-					
-					
 			}
+		
+				
+			
 			
 			
 	 };

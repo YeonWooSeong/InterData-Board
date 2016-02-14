@@ -179,6 +179,7 @@ public class ArticleController {
 			data.put("usrRefer", article.getUsrRefer());
 			articleService.updateRefer(data);
 		}
+		
 		List<ArticleVO> reply = articleService.selectByGrp(Integer.parseInt(code));
 		model.addAttribute("writing", article);
 		model.addAttribute("reply", reply);

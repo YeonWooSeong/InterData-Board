@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="${js}/new_event.js"></script>
 
 <!-- 글쓰기 눌렀을때 -->
 <div id="writeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
