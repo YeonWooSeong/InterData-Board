@@ -19,6 +19,8 @@
 							+'<th style="width:15%;">아이디</th>'
 							+'<th style="width:15%;">작성일</th>'
 							+'<th style="width:10%;">조회수</th>'
+							+'<th style="width:10%;">비고</th>'
+							
 							+'</tr>';
 					 
 					 var arr = [];
@@ -31,6 +33,7 @@
 							+'<td>'+ this.usrName +'</td>'
 							+'<td>'+ this.usrDate +'</td>'
 							+'<td>'+ this.usrRefer +'</td>'
+							+'<td><a id="equip'+ this.rcdNo +'" href="#update_Modal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">수정</a></td>'
 							+'</tr>';
 						arr.push(this.rcdNo);
 					});
@@ -117,13 +120,23 @@
 					// 각각의 글을 클릭하면
 					$.each(data.list, function(index, value) {
 						$("#read" + arr[index]).click(function() {
-							var bool = false;
+							var bool = true;
 							
-								bool = true;
+								
 							
 							newEvent.getData(bool,arr[index]);
 						});
 					});
+					
+					// 각각의 수정버튼을 클릭하면
+					$.each(data.list, function(index, value) {
+						$("#equip" + arr[index]).click(function() {
+							var bool = false;
+							
+							newEvent.getData2(bool,arr[index]);
+						});
+					});
+					
 				});
 			},
 			
@@ -157,6 +170,7 @@
 								+'<th style="width:15%;">아이디</th>'
 								+'<th style="width:15%;">작성일</th>'
 								+'<th style="width:10%;">조회수</th>'
+								+'<th style="width:10%;">비고</th>'
 								+'</tr>';
 						 var arr = [];
 						$.each(data.list, function(index, value) {
@@ -167,6 +181,7 @@
 								+'<td>'+ this.usrName +'</td>'
 								+'<td>'+ this.usrDate +'</td>'
 								+'<td>'+ this.usrRefer +'</td>'
+								+'<td><a id="equip'+ this.rcdNo +'" href="#update_Modal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">수정</a></td>'
 								+'</tr>';
 							arr.push(this.rcdNo);
 						});
@@ -254,17 +269,19 @@
 						// 각각의 글을 클릭하면
 						$.each(data.list, function(index, value) {
 							$("#read" + arr[index]).click(function() {
-								var bool = false;
-								if (userid != $("#"+this.id).parent().next().text()) {
-									var temp = $("#"+this.id).parent().next().next().next().text();
-									$("#"+this.id).parent().next().next().next().text(parseInt(temp)+1);
-								} else {
-									bool = true;
-								}
+								
+								var bool = true;
 								newEvent.getData(bool,arr[index]);
+							});
+							
+							$("#equip" + arr[index]).click(function() {
+								
+								var bool = false;
+								newEvent.getData2(bool,arr[index]);
 							});
 						});
 					},
+					
 					error : function() {
 						
 					}
@@ -309,6 +326,23 @@
 					}
 				});
 			},
+			
+			getData2 : function(bool, data) {
+				$("#code").html(data);
+				$.ajax(context + "/article/read",{
+					data : {
+						"myself" : bool, 
+						"code" : data
+					},
+					success : function(data) {
+						$("#update_Modal input:text[name=title2]").val(data.writing.usrSubject);
+						$("#update_Modal textarea[name=content2]").val(data.writing.usrContent);
+					},
+					error : function() {
+						alert("ajax 실패");
+					}
+				});
+			},
 			drawReply : function(data) {
 				
 				$("#reply_area").empty();
@@ -337,10 +371,12 @@
 							}
 						});
 					});
+					
 				});
-			}
+			},
 	
 				
+		
 			
 			
 			

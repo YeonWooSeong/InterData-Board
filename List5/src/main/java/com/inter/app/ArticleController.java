@@ -236,4 +236,30 @@ public class ArticleController {
 	}
 	
 	
+	@RequestMapping("/article/equipRead")
+	public void equipRead(
+			Model model,
+			String code
+			) {
+		logger.info("equip() 진입");
+		article = articleService.selectById(Integer.parseInt(code));
+		List<ArticleVO> reply = articleService.selectByGrp(Integer.parseInt(code));
+		model.addAttribute("writing", article);
+		model.addAttribute("reply", reply);
+	}
+	
+	
+	@RequestMapping(value="/article/write2", method=RequestMethod.POST)
+	public void equipWrite(
+			Model model,
+			String title,
+			String content,
+			String id
+			) {
+		logger.info("equipWrite() 진입");
+		article.setUsrSubject(title);
+		article.setUsrContent(content);
+		articleService.write(article);
+	}
+	
 }
