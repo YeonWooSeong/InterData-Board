@@ -27,9 +27,15 @@
     
     <link rel="stylesheet" href="${css}/new_inter.css" />
     <script type="text/javascript" src="${js}/new_event.js"></script>
-    
-    
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="${js}/new_event.js"></script>
+<script type="text/javascript" src="${js}/bootstrap.min.js"></script>
+<script type="text/javascript" src="${js}/bootstrap-table.js"></script>
+<script type="text/javascript" src="${js}/bootstrap-datepicker.js"></script>
+   <script src="${js}/jquery-1.11.1.min.js"></script>
+    <script src="${js}/lumino.glyphs.js"></script>
+    <script src="${js}/scripts.js"></script>
 </head>
 <body>
 	<div id="wrop">

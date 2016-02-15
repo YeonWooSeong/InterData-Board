@@ -13,6 +13,7 @@
 						 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
 						 	+'<table class="inter_tab" style="margin-bottom:10px;">'
 							+'<tr style="border-bottom:solid;">'
+							+'<th data-field="check" data-checkbox="true" ></th>'
 							+'<th style="width:10%;">번호</th>'
 							+'<th style="width:45%;">제목</th>'
 							+'<th style="width:15%;">아이디</th>'
@@ -24,6 +25,7 @@
 					$.each(data.list, function(index, value) {
 						table += 
 							'<tr>'
+							+'<td></td>'
 							+'<td>'+ this.rcdNo +'</td>'
 							+'<td><a id="read'+ this.rcdNo +'" href="#readModal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">'+ this.usrSubject +'</a></td>'
 							+'<td>'+ this.usrName +'</td>'
@@ -244,7 +246,7 @@
 						
 						//글쓰기 버튼을 클릭하면
 						$("#write").click(function() {
-							alert('글쓰기 버튼이 클릭')
+						
 								location.href = "#writeModal";
 							
 						});
@@ -283,7 +285,8 @@
 						newEvent.init(1);
 					},
 					error : function() {
-						alert("에이작스 실패");
+						alert("제목을 30자 내로 써주세요.");
+						location.href = "#writeModal";
 					}
 				});
 			},
@@ -326,6 +329,7 @@
 								reply : this.id
 							},
 							success : function(data) {
+								
 								newEvent.drawReply(data.reply)
 							},
 							error : function() {
@@ -335,7 +339,7 @@
 					});
 				});
 			}
-		
+	
 				
 			
 			

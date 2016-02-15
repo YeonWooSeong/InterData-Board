@@ -34,7 +34,7 @@ public class ArticleController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("ArticleController()");
+		logger.info("ArticleController() 메인");
 		return "inter/list5.tiles";
 	}
 	
@@ -208,5 +208,32 @@ public class ArticleController {
 		articleService.delete(Integer.parseInt(reply));
 		model.addAttribute("reply", articleService.selectByGrp(Integer.parseInt(code)));
 	}
+	
+	@RequestMapping("/article/delete")
+	public void deleteWrite(String code){
+		logger.info("ArticleController() Delete");
+		logger.info("번호:  {}", code);
+		articleService.delete(Integer.parseInt(code));
+	}
+	
+	@RequestMapping("/article/update")
+	public @ResponseBody Model update(
+			@RequestBody ArticleVO param,
+			Model model
+			){
+		logger.info("정보 수정, Controller-update() 진입");
+		article.setUsrSubject(param.getUsrSubject());
+		article.setUsrContent(param.getUsrContent());
+		int result = articleService.update(article);
+		if (result != 0) {
+			logger.info("정보 수정완료");
+			model.addAttribute("result","success");
+		} else {
+			logger.info("정보 수정실패");
+			model.addAttribute("result","fail");
+		}
+				return model;
+	}
+	
 	
 }

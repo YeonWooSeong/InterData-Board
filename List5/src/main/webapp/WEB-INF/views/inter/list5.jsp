@@ -13,6 +13,7 @@
    	<div class="modal-content" style="width:800px;">
    		<div class="modal-body" style="height:600px;">
    			<div style="margin-left:8%;">
+   			<span id="code2" style="visibility:hidden"></span>
    				<label for="title" style="display:block;">제목</label>
     			<input name="title" type="text" size="80" maxlength="100" style="width:90%; color:black;"/>
     		</div>
@@ -57,7 +58,41 @@
    			<br />
    			<div>
    				<button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">댓글달기</button>
-    			<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">종료</button>
+   				<button id="equipp" class="btn btn-primary btn-lg center-block" data-toggle="modal"
+                 	data-dismiss="modal" href="#update_Modal" title="Mypage Update"  style="margin-left:0;">수정</button>
+   				
+   				
+   				<button id="delete_btn" class="btn btn-primary btn-lg center-block" style="margin-left:38%; margin-right:20px; float:left;">글 삭제</button>
+    			<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">게시판으로</button>
+    			
+    		</div>
+    		<div id="reply_area" style="padding-top:10px;">
+    		</div>
+    	</div>
+   	</div>
+   	</div>
+</div>
+
+<!-- 글 수정할 때 -->
+<div id="update_Modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" style="margin-right:37%">
+   	<div class="modal-content" style="width:800px;">
+   		<div class="modal-body" style="min-height:800px;">
+   			<div style="margin-left:8%;">
+   				<span id="code" style="visibility:hidden"></span>
+   				<label for="title" style="display:block;">제목</label>
+    			<input name="title" type="text" size="80" maxlength="100" style="width:90%; color:black;"/>
+    		</div>
+    		<br />
+    		<div style="margin-left:8%">
+   				<label for="content" style="display:block;">내용</label>
+   				<textarea name="content" cols="82" rows="20" style="width:90%; color:black;"></textarea>
+   			</div>
+   			<br />
+   			<br />
+   			<div>
+   				<button id="equip_btn2" class="btn btn-primary btn-lg center-block" style="margin-left:0;">수정하기</button>
+    			<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">취소</button>
     		</div>
     		<div id="reply_area" style="padding-top:10px;">
     		</div>
@@ -68,9 +103,14 @@
 
 
 
+ <script src="${js}/jquery-1.11.1.min.js"></script>
+    <script src="${js}/lumino.glyphs.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="${js}/new_event.js"></script>
+<script type="text/javascript" src="${js}/bootstrap.min.js"></script>
+<script type="text/javascript" src="${js}/bootstrap-table.js"></script>
+<script type="text/javascript" src="${js}/bootstrap-datepicker.js"></script>
 <script>
 $(function(){
 	
@@ -91,6 +131,46 @@ $("#write_btn").click(function() {
 	$("#write_close_btn").click(function() {
 		$("input:text[name=title]").val("");
 		$("textarea[name=content]").val("");
+	});
+	
+	
+	$("#delete_btn").click(function(){
+		$.ajax(context + "/article/delete",{
+			data : {
+			code : $("#code").text()
+			},
+			
+			success : function(data) {
+				alert('글이 삭제 되었습니다.');
+				newEvent.init(1);
+			},
+			error : function() {
+				
+			}
+			
+		});
+		location.reload();
+	});
+	
+	
+$("#equip_btn").click(function(){
+	$.ajax('',{
+	data :{},
+	dataType : 'json',
+	success : function(data){
+		var table = '<div id="readModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog" style="margin-right:37%">'
+			+'<div class="modal-content" style="width:800px;"><div class="modal-body" style="min-height:800px;"><div style="margin-left:8%;">'
+			+'<span id="code" style="visibility:hidden"></span><label for="title" style="display:block;">제목</label>'
+			+'<input name="title" type="text" disabled size="80" maxlength="100" style="width:90%; color:black;"/>'+data.usrSubject+'</div><br />'
+			+'<div style="margin-left:8%"><label for="content" style="display:block;">내용</label>'
+			+'<textarea name="content" disabled cols="82" rows="20" style="width:90%; height:40%; color:black;">'+data.usrContent+'</textarea></div><br />'
+			+'<div><button id="equip_btn2" class="btn btn-primary btn-lg center-block" style="margin-left:0;">수정하기</button></div>'
+		$('#tem-sub').html(table);
+			
+	}
+		
+	});
+	
 	});
 	
 	

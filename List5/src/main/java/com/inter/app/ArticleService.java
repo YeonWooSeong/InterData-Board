@@ -22,7 +22,7 @@ public interface ArticleService {
 	public int update(ArticleVO article);
 	public int updateRefer(Map<String, Integer> data);
 	
-	// D : 삭제 (회원탈퇴)
+	// D : 삭제
 	public int delete(int rcdNo);
 
 	public int reply(ArticleVO article);

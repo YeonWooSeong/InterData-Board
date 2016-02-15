@@ -51,6 +51,7 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public int update(ArticleVO article) {
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
+		logger.info("ArticleServiceImpl : update");
 		return mapper.update(article);
 	}
 	@Override
