@@ -58,11 +58,6 @@
    			<br />
    			<div>
    				<button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">댓글달기</button>
-   				<button id="equip" class="btn btn-primary btn-lg center-block" data-toggle="modal"
-                 	  title="Mypage Update"  style="margin-left:0;">수정</button>
-   				
-   				
-   				
     			<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">게시판으로</button>
     			
     		</div>
@@ -155,7 +150,7 @@ $("#write_btn").click(function() {
 	});
 	
 	$("#equip").click(function(){
-		$.ajax(context + "/article/equipRead",{
+		$.ajax(context + "/article/read",{
 			data : {
 				"code" : data
 			},
@@ -189,7 +184,6 @@ $("#write_btn").click(function() {
 				
 			}
 		});
-		
 	})
 	
 	

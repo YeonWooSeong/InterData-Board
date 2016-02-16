@@ -151,7 +151,6 @@
      
      <update id="update" parameterType="com.inter.app.ArticleVO">
      	UPDATE BOARD SET 
-     		USR_MAIL = #{usrMail},
      		USR_SUBJECT = #{usrSubject},
      		USR_CONTENT = #{usrContent}
      	WHERE RCD_NO = #{rcdNo} 

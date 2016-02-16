@@ -275,7 +275,7 @@
 							});
 							
 							$("#equip" + arr[index]).click(function() {
-								
+							
 								var bool = false;
 								newEvent.getData2(bool,arr[index]);
 							});
@@ -328,10 +328,11 @@
 			},
 			
 			getData2 : function(bool, data) {
+			
 				$("#code").html(data);
-				$.ajax(context + "/article/read",{
+				$.ajax(context + "/article/equipRead",{
 					data : {
-						"myself" : bool, 
+						"myself" : bool,
 						"code" : data
 					},
 					success : function(data) {
