@@ -32,11 +32,7 @@ public class ArticleController {
 	@Autowired ArticleVO article;
 	@Autowired ArticleServiceImpl articleService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("ArticleController() 메인");
-		return "inter/list5.tiles";
-	}
+
 	
 	
 	

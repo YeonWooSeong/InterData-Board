@@ -118,11 +118,6 @@
 				
 					});
 					
-					
-					$("#register").click(function() {
-						location.href = "#joinModal";
-					});
-					
 					// 각각의 글을 클릭하면
 					$.each(data.list, function(index, value) {
 						$("#read" + arr[index]).click(function() {
