@@ -22,7 +22,7 @@
                 
                 	<div class="col-md-4" style="width: 300px;">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="ID" id="join_Id" onkeyup="Members.checking_Id()">
+                        <input type="text" class="form-control" placeholder="ID" id="join_Id" onkeyup="syw.checking_Id()">
                         <label style="float: left; color: red;" id="check_Msg">아이디를 입력해주세요 ♬</label>
                     	<div style="height:20px;"></div>
                     </div>
@@ -65,7 +65,6 @@
                         <label></label>
                         <button type="button" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-block btn-lg" id="join">회원가입 <i class="ion-android-arrow-forward"></i></button>
                     </div>
-                    
                 </form>
             </div>
     	</div>
@@ -77,5 +76,56 @@
 $(function() {
 	syw.sywLogin();
 });
+
+/* ('.modal').on('hidden.bs.modal', function () {
+    $(this).removeData('bs.modal');
+}); */
+
+/* 회원가입 */
+$("#join").click(function(){
+	var check_id = $("#join_Id").val();
+	var check_email = $("#email").val();
+	var check_password = $("#join_Password").val();
+	var check_name = $("#name").val();
+	var check_phone = $("#phone").val();
+	var check_confirm_num = $("#confirm_num").val();
+	if (check_id === "") {
+		alert('공란을 채워주세요.');
+	} 
+	else if(check_email === "") {
+		alert('공란을 채워주세요.');
+	} 
+	else if(check_password === "") {
+		alert('공란을 채워주세요.');
+	} 
+	else if(check_name === "") {
+		alert('공란을 채워주세요.');
+	} 
+	else if(check_phone === "") {
+		alert('공란을 채워주세요.');
+	} 
+	else if(check_confirm_num === "") {
+		alert('공란을 채워주세요.');
+	} else {
+		syw.join();	
+	}
+	
+	
+});
+
+/* 이메일 인증 */
+$("#btn_confirm").click(function(){
+	var check_Confirm_Email = $("#email").val();
+	if(check_Confirm_Email === ""){
+		alert('이메일 입력란을 채워주세요.');
+	}
+	else{
+		syw.join_Auth();
+	}
+});
+
+
+
+
 
 </script>
