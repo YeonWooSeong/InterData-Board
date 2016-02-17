@@ -43,6 +43,7 @@
 					var pagination = 
 							'<div style="; ">'
 							+ '<button id="list" class="btn btn-primary" style="float:left; margin-left:80px;">목록</button>'
+							+'<a class="page-scroll" data-toggle="modal" href="#joinModal" id="register">회원가입</a></div></form></section></div>';
 							+ '<button id="write" class="btn btn-primary" data-toggle="modal" data-target="#writeModal" style="margin-right:80px; float:right;">글쓰기</button>'
 							+ '</div>'
 							+ '<table id="pagination">'
@@ -115,6 +116,11 @@
 					$("#write").click(function() {
 					$("#write").attr("data-target","#writeModal");
 				
+					});
+					
+					
+					$("#register").click(function() {
+						location.href = "#joinModal";
 					});
 					
 					// 각각의 글을 클릭하면
