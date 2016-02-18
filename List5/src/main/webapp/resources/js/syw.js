@@ -1,5 +1,5 @@
 var syw = {
-		//  로그인ㅎ
+		//  Main
 		sywLogin : function() {
 			var table = '<div class="container"><div class="row" style="margin-top: 10%;"><div class="col-sm-6 col-md-4 col-md-offset-4"><h1 class="text-center login-title">InterData</h1><div class="account-wall">'
 				+'<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">'
@@ -7,7 +7,7 @@ var syw = {
 				+'<input type="text" id="id" class="form-control" placeholder="아이디를 입력하세요" style="margin-bottom: 5%;" required autofocus>'
 				+'<input type="password" id="password" class="form-control" placeholder="비밀번호를 입력하세요" style="margin-bottom: 5%;" required>'
 				+'<button class="btn btn-lg btn-primary btn-block" type="submit" id="setLogin">로그인</button>'
-				+'<a href="#" class="pull-right need-help">아이디를 잊으셨나요?</a><span class="clearfix"></span></form></div>'
+				+'<a href="#" class="pull-right need-help">아이디/비밀번호 찾기.</a><span class="clearfix"></span></form></div>'
 				+'<a data-toggle="modal" href="#joinModal" class="text-center new-account">"회원가입"</a></div></div></div>';
 				$("#temp-inter").html(table);
 			$("#register").click(function() {
@@ -15,21 +15,22 @@ var syw = {
 			});
 			$("#setLogin").click(function() {
 				syw.login();
+				newEvent.init(1);
+				
 			});
 		},
 		
 		// 로그인
 		login : function() {
+			
 			$.ajax(context + "/member/login",{
 				data : {"id" : $("#id").val(),
 						"password" :$("#password").val()
 				},
 				type : "post",
 				success : function(data) {
-					//로그인 결과가 성공이면
 					if(data.member != null){
 						userid = data.member.id;
-						alert("환영합니다. '"+data.member.name+"'님.");
 						$("#mypage_Id").val(data.member.id);
 						$("#mypage_email").val(data.member.email);	
 						$("#mypage_Phone").val(data.member.phone);
@@ -40,14 +41,14 @@ var syw = {
 						$("#update_Phone").val(data.member.phone);
 						$("#update_Password").val(data.member.password);
 						$("#update_Name").val(data.member.name);
-						newEvent.init(1);
+						alert("환영합니다. '"+data.member.name+"'님.");
+						
 					} else{
-					//로그인 결과가 실패면 (데이터가 널이면)
 						alert("아이디 혹은 패스워드를 다시한번 확인해주세요");
 					}
 				},
 				error : function() {
-					alert("아이디 혹은 패스워드를 다시한번 확인해주세요");
+					alert("아이디 혹은 패스워드를 다시한번 확인해주세요 Error");
 				}
 			});
 		},
@@ -192,7 +193,10 @@ var syw = {
 				}
 			});
 		},
-		
+		testsyw : function() {
+			var table = '<div class="testsyW" id="testsyW">테스트페이지</div>';
+				$("#temp-inter").html(table);
+		}
 		
 		
 }

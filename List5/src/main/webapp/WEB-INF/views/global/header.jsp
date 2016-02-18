@@ -12,12 +12,10 @@
 
 <!-- Login -->
  <c:if test= "${not empty sessionScope.user}">
- <li>
+ <dt>
  <font color="white">인터데이터 게시판 페이지에 오신걸 환영합니다.</font><font style="color: white; margin-left: 20px;">${user.name} 님.</font>
- </li>
- <li>
- <a style="color: white; margin-left: 97%;" class="page-scroll" data-toggle="modal" href="#mypage_Modal" id="id_Click">마이페이지</a>
- </li>
+ <a style="color: white; margin-left: 69%;" class="page-scroll" data-toggle="modal" href="#mypage_Modal" id="id_Click">마이페이지</a>
+ </dt>
  </c:if>
  
 </ul>

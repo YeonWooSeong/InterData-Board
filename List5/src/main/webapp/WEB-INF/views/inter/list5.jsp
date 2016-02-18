@@ -2,6 +2,10 @@
 
 
 
+<section class="bg-dark" id="temp-inter">
+<div class="tem-sub" id="temp-sub"></div>
+</section>
+
 
 
 
@@ -110,7 +114,7 @@ $(function(){
 	
 	newEvent.init(1);
 
-})
+});
 
 $("#write_btn").click(function() {
 		if($("#writeModal input:text[name=title]").val() === ""){

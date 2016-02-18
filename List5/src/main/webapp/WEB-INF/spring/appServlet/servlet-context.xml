@@ -27,6 +27,16 @@
      <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" >
            <beans:property name= "viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
      </beans:bean >
+	<mvc:interceptors>
+        <mvc:interceptor> 
+           <mvc:mapping path="/admin/member"/>
+           <mvc:mapping path="/admin/main"/>
+           
+           <!-- 로그인체크 인터셉터 클래스 -->
+           <beans:bean class="com.inter.global.Interceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+	
 	
 	
 </beans:beans>

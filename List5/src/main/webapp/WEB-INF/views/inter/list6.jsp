@@ -126,7 +126,7 @@
                     <button type="button" id="btn_Delete"
                     style="margin-top:6px; width: 100px; margin-left: 10px; border-radius: 10px; float: left;" 
                     class="btn btn-primary btn-block" data-dismiss="modal">회원탈퇴</button>
-                    
+                    <button id="read_btn" class="btn btn-primary btn-block" data-dismiss="modal" aria-hidden="true" style="margin-top:17px; margin-left: 45px;  width: 100px; border-radius: 10px; float: left;">돌아가기</button>
                     
                 </form>
             </div>
@@ -192,6 +192,7 @@
                  	href="#update_Modal">
                  	내정보수정</a>
              		
+             		<button id="read_btn" class="btn btn-primary btn-block" data-dismiss="modal" aria-hidden="true" style="margin-top:17px; margin-left: 45px;  width: 100px; border-radius: 10px; float: left;">돌아가기</button>
       
               
                    <%--  <c:forEach var="ticket" items="${tickets}" varStatus="status">
@@ -260,7 +261,26 @@ $("#btn_confirm").click(function(){
 });
 
 
+/* 로그아웃 */
+$("#btn_Logout").click(function(){
+	location.href = context + "/member/logout";
+});
+
+/* 정보수정 버튼 */
+$("#btn_Update").click(function(){
+	if(confirm('정보수정을 하시겠습니까?')) {
+		syw.update();
+	}
+});
 
 
+
+/*탈퇴버튼*/
+$("#btn_Delete").click(function(){
+	if(confirm('정말 회원탈퇴를 하시겠습니까?')) {
+		
+		syw.delete_Member();
+	}
+});
 
 </script>

@@ -81,17 +81,20 @@ public class MemberServiceImpl  implements MemberService{
 	public MemberVO login(String id, String pass) {
 		logger.info("MemberServiceImpl : login");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		MemberVO loginMember = null;
-		loginMember = mapper.selectOneBy(id);
+		MemberVO loginMember = mapper.selectOneBy(id);
 		if (loginMember != null) {
 			System.out.println("로그인해서 나온 값은?? "
 					+ "* 현재 id가 틀릴경우 아예 mysql자체에서 에러가 나는 것 같음."+loginMember.getId());
+			
 			if (loginMember.getId() ==  null) {
+				System.out.println("아이디없음");
 				return null;
 			} 
 			if (loginMember.getPassword().equals(pass)) {
+				System.out.println("아이디,비번 일치");
 				return loginMember;
 			}else{
+				System.out.println("id 비번 틀렸음 ㅡㅡ.");
 				return null;
 			}
 		} else {

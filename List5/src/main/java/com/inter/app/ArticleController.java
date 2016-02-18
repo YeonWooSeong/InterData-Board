@@ -32,7 +32,7 @@ public class ArticleController {
 	@Autowired ArticleVO article;
 	@Autowired ArticleServiceImpl articleService;
 	
-	@RequestMapping(value = "/article/sywBoard", method = RequestMethod.GET)
+	@RequestMapping(value = "/article/List5", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("ArticleController()");
 		return "inter/list5.tiles";
@@ -61,7 +61,7 @@ public class ArticleController {
 			lastPage = totalPage;
 		}
 		
-		logger.info("boardList() 진입");
+		logger.info("boardList() inter 진입");
 		logger.info("넘어온 페이지 번호 : {}", pageNo);
 		List<ArticleVO> list = articleService.getList(CommandFactory.list(pageNo));
 		Map<String,Object> result = new HashMap<String,Object>();

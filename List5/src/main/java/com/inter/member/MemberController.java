@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -45,7 +46,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("MemberController()");
+		logger.info("MemberController : {}", locale);
 		return "inter/list6.tiles";
 	}
 	
@@ -126,7 +127,7 @@ public class MemberController {
     }
 	
 	/*로그아웃*/
-	@RequestMapping("/logout")
+	@RequestMapping("/member/logout")
 	public String logout(Model model, SessionStatus status){
 		logger.info("멤버컨트롤러 logout() - 진입");
 		status.setComplete();
@@ -169,5 +170,47 @@ public class MemberController {
         return model;
     }
 	
+
+	/*내정보 수정*/
+	@RequestMapping(value="/member/update", method=RequestMethod.POST)
+	public @ResponseBody Model update(
+			@RequestBody MemberVO param,
+			Model model
+			) {
+		logger.info("내정보 수정, Controller-update() 진입");
+		member.setPassword(param.getPassword());
+		member.setPhone(param.getPhone());
+		member.setId(param.getId());
+		int result = service.change(member);
+		if (result != 0) {
+			logger.info("회원정보 수정완료");
+			model.addAttribute("result","success");
+		} else {
+			logger.info("회원정보 수정실패");
+			model.addAttribute("result","fail");
+		}
+		return model;
+	}
+	
+	/*회원탈퇴*/
+	@RequestMapping("/member/delete")
+	public Model delete(
+			@RequestParam("delete_Id")String delete_Id,
+			SessionStatus status,
+			Model model
+			){
+		logger.info("멤버컨트롤러 delete() - 진입");
+		logger.info("삭제할 id는?  "+delete_Id);
+		int result = service.remove(delete_Id);
+		if (result != 0) {
+			logger.info("회원탈퇴 완료");
+			status.setComplete();
+			model.addAttribute("result","success");
+		} else {
+			logger.info("회원탈퇴 실패");
+			model.addAttribute("result","fail");
+		}
+		return model;
+	}
 	
 }

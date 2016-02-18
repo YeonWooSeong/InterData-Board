@@ -43,7 +43,7 @@
 					var pagination = 
 							'<div style="; ">'
 							+ '<button id="list" class="btn btn-primary" style="float:left; margin-left:80px;">목록</button>'
-							+'<a class="page-scroll" data-toggle="modal" href="#joinModal" id="register">회원가입</a></div></form></section></div>';
+							+'<button class="page-scroll" data-toggle="modal"  id="register">회원가입</button></div></form></section></div>';
 							+ '<button id="write" class="btn btn-primary" data-toggle="modal" data-target="#writeModal" style="margin-right:80px; float:right;">글쓰기</button>'
 							+ '</div>'
 							+ '<table id="pagination">'
@@ -110,6 +110,10 @@
 					//목차 버튼을 클릭하면
 					$("#list").click(function() {
 						newEvent.init(1);
+					});
+					
+					$("#register").click(function() {
+						syw.sywLogin();
 					});
 					
 					//글쓰기 버튼을 클릭하면
