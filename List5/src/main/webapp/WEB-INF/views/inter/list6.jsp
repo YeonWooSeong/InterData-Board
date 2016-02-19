@@ -3,7 +3,12 @@
 
 
 <div class="bg-dark" id="temp-inter">
-${user.id}
+
+<form name="insertFrm"> 
+<textarea name="test"  onKeyup="len_chk()"> 
+</textarea> 
+</form>
+
 </div>
 
 
@@ -325,7 +330,20 @@ ${user.id}
 <script>
 
 
-/* 회원가입 */
+//* 회원가입 
+
+//글자수 제한 체크 
+function len_chk(){  
+  var frm = document.insertFrm.test; 
+    
+  if(frm.value.length > 10){  
+       alert("글자수는 영문10, 한글5자로 제한됩니다.!");  
+       frm.value = frm.value.substring(0,10);  
+       frm.focus();  
+  } 
+
+} 
+
 $("#join").click(function(){
 	var check_id = $("#join_Id").val();
 	var check_email = $("#email").val();
@@ -335,6 +353,11 @@ $("#join").click(function(){
 	var check_confirm_num = $("#confirm_num").val();
 	if (check_id === "") {
 		alert('아이디 공란을 채워주세요.');
+	}else if(check_id.length>10){
+		alert('10글자 오류 한글10/영어10');
+		check_id = check_id.value.substring(0,10)
+		
+		
 	} 
 	else if(check_email === "") {
 		alert('이메일 공란을 채워주세요.');
