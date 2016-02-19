@@ -31,16 +31,7 @@ public class ArticleController {
 	private String column = null;
 	@Autowired ArticleVO article;
 	@Autowired ArticleServiceImpl articleService;
-	
-	@RequestMapping(value = "/article/List5", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("ArticleController()");
-		return "inter/list5.tiles";
-	}
-	
-	
-	
-	
+
 	
 	@RequestMapping("/article/list/{pageNo}")
 	public @ResponseBody Map<String, Object> boardList(

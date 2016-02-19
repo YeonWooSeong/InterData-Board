@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<section class="bg-dark" id="temp-inter">
-<div class="tem-sub" id="temp-sub"></div>
-</section>
+
+
+<div class="bg-dark" id="temp-inter">
+</div>
 
 
 
@@ -71,6 +72,30 @@
     </div>
     </div>
 </div>
+
+<!-- 로그인 버튼을 클릭하였을 경우 -->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    	<div class="modal-body">
+    		<h2 class="text-center">로그인</h2>
+    		<hr />
+    		<h5 class="text-center">
+    		    InerData에 오신것을 환영합니다.
+    		</h5>
+    		<br />
+    		<label for="id" style="padding-left:10%">아이디</label>
+    		<input type="text" name="id" id="id" placeholder="아이디" style="color: black;"/> &nbsp;&nbsp;
+    		<label for="password">비밀번호</label>
+    		<input type="password" name="password" id="password" placeholder="비밀번호" style="color: black;"/>
+    		<br/>
+    		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" id="login" > login </button>
+    	</div>
+    </div>
+    </div>
+</div>
+
+
 
 <!-- 업데이트 페이지 - 정보수정 버튼 클릭했을 때 -->
 <div id="update_Modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -209,9 +234,7 @@
 
 
 <script>
-$(function() {
-	syw.sywLogin();
-});
+
 
 /* ('.modal').on('hidden.bs.modal', function () {
     $(this).removeData('bs.modal');
@@ -261,6 +284,12 @@ $("#btn_confirm").click(function(){
 });
 
 
+/*로그인*/
+ $("#login").click(function() {
+	syw.login();
+})
+ 
+
 /* 로그아웃 */
 $("#btn_Logout").click(function(){
 	location.href = context + "/member/logout";
@@ -282,5 +311,7 @@ $("#btn_Delete").click(function(){
 		syw.delete_Member();
 	}
 });
+
+
 
 </script>

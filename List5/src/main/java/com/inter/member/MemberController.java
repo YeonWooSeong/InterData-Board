@@ -1,8 +1,5 @@
 package com.inter.member;
 
-import java.util.List;
-import java.util.Locale;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,11 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.inter.member.Email;
-import com.inter.member.EmailSender;
-import com.inter.member.MemberServiceImpl;
-import com.inter.member.MemberVO;
 
 
 @Controller
@@ -39,16 +31,6 @@ public class MemberController {
 	private EmailSender emailSender;
 	int auth_Num = 0;
 	
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("MemberController : {}", locale);
-		return "inter/list6.tiles";
-	}
 	
 	
 	/*로그인*/
@@ -211,6 +193,12 @@ public class MemberController {
 			model.addAttribute("result","fail");
 		}
 		return model;
+	}
+
+	
+	@RequestMapping("/member/headerReload")
+	public String headerReload() {
+		return "global2/header.jsp";
 	}
 	
 }
