@@ -158,9 +158,10 @@ public class ArticleController {
 			String code,
 			String myself
 			) {
-		
 		logger.info("read() 진입");
-		
+		article = articleService.selectById(Integer.parseInt(code));
+		// 자기자신은 조회수를 증가시키면 안됨
+		if(myself.equals("false")){
 			logger.info("이전 조회수 {}", article.getUsrRefer());
 			article.setUsrRefer(article.getUsrRefer()+1);
 			logger.info("갱신된 조회수 {}", article.getUsrRefer());
@@ -168,8 +169,7 @@ public class ArticleController {
 			data.put("rcdNo", Integer.parseInt(code));
 			data.put("usrRefer", article.getUsrRefer());
 			articleService.updateRefer(data);
-		
-		article = articleService.selectById(Integer.parseInt(code));
+		}
 		List<ArticleVO> reply = articleService.selectByGrp(Integer.parseInt(code));
 		model.addAttribute("writing", article);
 		model.addAttribute("reply", reply);

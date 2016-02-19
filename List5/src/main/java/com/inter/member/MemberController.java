@@ -196,9 +196,11 @@ public class MemberController {
 	}
 
 	
-	@RequestMapping("/member/headerReload")
+	@RequestMapping("/member/headerReload2")
 	public String headerReload() {
-		return "global2/header.jsp";
+		logger.info("headerReload()");
+		System.out.println("headerReload()syso");
+		return "global/header.jsp";
 	}
 	
 }

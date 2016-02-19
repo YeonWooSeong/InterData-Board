@@ -31,6 +31,7 @@ var syw = {
 					if(data.member != null){
 						$("#bs-navbar").load(context + "/member/headerReload #bs-navbar");
 						userid = data.member.id;
+					
 						$("#mypage_Id").val(data.member.id);
 						$("#mypage_email").val(data.member.email);	
 						$("#mypage_Phone").val(data.member.phone);
@@ -42,7 +43,7 @@ var syw = {
 						$("#update_Password").val(data.member.password);
 						$("#update_Name").val(data.member.name);
 						location.reload();
-						newEvent.init(1);
+						alert('환영합니다 '+userid +'님.');
 					} else{
 						alert("아이디 혹은 패스워드를 다시한번 확인해주세요");
 					}

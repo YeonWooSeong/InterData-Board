@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.inter.mapper.AdminMapper">
+     <select id="memberList" resultType="com.inter.member.MemberVO">
+        	SELECT
+          	 	ID AS id,
+          	 	PASSWORD AS password,
+ 				NAME AS name,
+ 				EMAIL AS email,
+ 				PHONE AS phone
+ 			FROM MEMBER
+     </select>
+ </mapper>

@@ -83,8 +83,7 @@ public class MemberServiceImpl  implements MemberService{
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		MemberVO loginMember = mapper.selectOneBy(id);
 		if (loginMember != null) {
-			System.out.println("로그인해서 나온 값은?? "
-					+ "* 현재 id가 틀릴경우 아예 mysql자체에서 에러가 나는 것 같음."+loginMember.getId());
+			System.out.println("로그인해서 나온 아이디?? "+loginMember.getId());
 			
 			if (loginMember.getId() ==  null) {
 				System.out.println("아이디없음");

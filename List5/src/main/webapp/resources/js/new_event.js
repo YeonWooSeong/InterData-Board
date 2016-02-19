@@ -1,4 +1,14 @@
- var newEvent = {
+var newEvent = {
+		
+		userid : '',
+		getUserid : function() {
+			return this.userid;
+		},
+		setUserid : function(userid) {
+			this.userid = userid; 
+		},
+		
+		
 			 init : function(page) {
 				 $.getJSON(context + "/article/list/" + page, function(data) {
 					 var count = data.count;
@@ -13,27 +23,24 @@
 						 	+'<span style="margin-left:30%;">총 게시글: '+ data.count +'개</span>'
 						 	+'<table class="inter_tab" style="margin-bottom:10px;">'
 							+'<tr style="border-bottom:solid;">'
-							+'<th data-field="check" data-checkbox="true" ></th>'
 							+'<th style="width:10%;">번호</th>'
 							+'<th style="width:45%;">제목</th>'
 							+'<th style="width:15%;">아이디</th>'
 							+'<th style="width:15%;">작성일</th>'
 							+'<th style="width:10%;">조회수</th>'
 							+'<th style="width:10%;">비고</th>'
-							
 							+'</tr>';
 					 
 					 var arr = [];
 					$.each(data.list, function(index, value) {
 						table += 
 							'<tr>'
-							+'<td></td>'
 							+'<td>'+ this.rcdNo +'</td>'
 							+'<td><a id="read'+ this.rcdNo +'" href="#readModal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">'+ this.usrSubject +'</a></td>'
 							+'<td>'+ this.usrName +'</td>'
 							+'<td>'+ this.usrDate +'</td>'
 							+'<td>'+ this.usrRefer +'</td>'
-							+'<td><a id="equip'+ this.rcdNo +'" href="#update_Modal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">수정</a></td>'
+							+'<td><a id="equip'+ this.rcdNo +'" href="#equip_Modal" class="page-scroll" data-toggle="modal" style="color:#9385AD;">수정</a></td>'
 							+'</tr>';
 						arr.push(this.rcdNo);
 					});
@@ -43,7 +50,6 @@
 					var pagination = 
 							'<div style="; ">'
 							+ '<button id="list" class="btn btn-primary" style="float:left; margin-left:80px;">목록</button>'
-							+'<button class="page-scroll" data-toggle="modal"  id="register">회원가입</button></div></form></section></div>';
 							+ '<button id="write" class="btn btn-primary" data-toggle="modal" data-target="#writeModal" style="margin-right:80px; float:right;">글쓰기</button>'
 							+ '</div>'
 							+ '<table id="pagination">'
@@ -110,6 +116,7 @@
 					//목차 버튼을 클릭하면
 					$("#list").click(function() {
 						newEvent.init(1);
+						alert(userid);
 					});
 					
 					$("#register").click(function() {
@@ -117,9 +124,13 @@
 					});
 					
 					//글쓰기 버튼을 클릭하면
-					$("#write").click(function() {
-					$("#write").attr("data-target","#writeModal");
-				
+					$("#write").click(function(e) {
+						if(userid != null){
+							$("#write").attr("data-target","#writeModal");
+						} else {
+							alert("로그인을 먼저 해주세요");
+							$("#write").attr("data-target","");
+						}
 					});
 					
 					// 각각의 글을 클릭하면
@@ -244,8 +255,7 @@
 	                    			+ '<SELECT NAME="column" SIZE=1 style="color:black;">'
 	                    			+ '<OPTION VALUE="" SELECTED style="color:black;">선택</OPTION>'
 	                    			+ '<OPTION VALUE="USR_NAME" style="color:black;">ID</OPTION>'
-	                    			+ '<OPTION VALUE="USR_SUBJECT" style="color:black;">제목</OPTION>'
-	                    			+ '<OPTION VALUE="USR_CONTENT" style="color:black;">내용</OPTION>'
+f	                    			+ '<OPTION VALUE="USR_CONTENT" style="color:black;">내용</OPTION>'
 	                    			+ '</SELECT>&nbsp&nbsp&nbsp;'
 	                    			+ '<INPUT TYPE=TEXT NAME="keyword" SIZE=20 MAXLENGTH=40 style="color:black;">&nbsp&nbsp&nbsp;' 
 	                    			+ '<button id="traverse" style="color:black;">검 색</button>'
@@ -274,10 +284,17 @@
 						// 각각의 글을 클릭하면
 						$.each(data.list, function(index, value) {
 							$("#read" + arr[index]).click(function() {
-								
-								var bool = true;
+								var bool = false;
+								if (userid != $("#"+this.id).parent().next().text()) {
+									var temp = $("#"+this.id).parent().next().next().next().text();
+									$("#"+this.id).parent().next().next().next().text(parseInt(temp)+1);
+								} else {
+									bool = true;
+								}
 								newEvent.getData(bool,arr[index]);
 							});
+							
+						
 							
 							$("#equip" + arr[index]).click(function() {
 							
@@ -341,8 +358,8 @@
 						"code" : data
 					},
 					success : function(data) {
-						$("#update_Modal input:text[name=title2]").val(data.writing.usrSubject);
-						$("#update_Modal textarea[name=content2]").val(data.writing.usrContent);
+						$("#equip_Modal input:text[name=title2]").val(data.writing.usrSubject);
+						$("#equip_Modal textarea[name=content2]").val(data.writing.usrContent);
 					},
 					error : function() {
 						alert("ajax 실패");
