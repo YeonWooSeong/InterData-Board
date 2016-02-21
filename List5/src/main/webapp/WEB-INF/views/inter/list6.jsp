@@ -3,12 +3,6 @@
 
 
 <div class="bg-dark" id="temp-inter">
-
-<form name="insertFrm"> 
-<textarea name="test"  onKeyup="len_chk()"> 
-</textarea> 
-</form>
-
 </div>
 
 
@@ -29,7 +23,12 @@
                 
                 	<div class="col-md-4" style="width: 300px;">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="ID" id="join_Id" onkeyup="syw.checking_Id()">
+                        <input type="text" class="form-control" placeholder="ID" name=join_Idd id="join_Id" onkeyup="syw.checking_Id()">
+                        
+                          <button type="button" id="btn_check"
+                    style="margin-top:3px; font-size: 12px; width: 100px; border-radius: 10px; float: left;" 
+                    class="btn btn-primary btn-block">중복확인</button>
+                    
                         <label style="float: left; color: red;" id="check_Msg">아이디를 입력해주세요 ♬</label>
                     	<div style="height:20px;"></div>
                     </div>
@@ -328,40 +327,46 @@
 </div>
 
 <script>
+function chk(re, e, msg) {
+    if (re.test(e.value)) {
+    	alert('사용 가능합니다.')
+            return true;
+    }
 
+    alert(msg);
+    e.value = "";
+    e.focus();
+    return false;
+}
+var patternId = /^[a-z][a-z\d]{3,11}$/;
+var patternHangle = /^[가-힣]{2,4}$/;
+var patternEmail =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+var patternName = /^[가-힝]{2,}$/;
+var patternPhoneNumber = /^[0-9]{12}$/;
 
+var check_id = $("#join_Id").val();
+var check_id2 = document.getElementById('join_Id');
+
+var check_email = $("#email").val();
+var check_email2 = document.getElementById('email');
+
+var check_password = $("#join_Password").val();
+var check_name = $("#name").val();
+var check_phone = $("#phone").val();
+var check_confirm_num = $("#confirm_num").val();
 //* 회원가입 
 
 //글자수 제한 체크 
-function len_chk(){  
-  var frm = document.insertFrm.test; 
-    
-  if(frm.value.length > 10){  
-       alert("글자수는 영문10, 한글5자로 제한됩니다.!");  
-       frm.value = frm.value.substring(0,10);  
-       frm.focus();  
-  } 
 
-} 
 
 $("#join").click(function(){
-	var check_id = $("#join_Id").val();
-	var check_email = $("#email").val();
-	var check_password = $("#join_Password").val();
-	var check_name = $("#name").val();
-	var check_phone = $("#phone").val();
-	var check_confirm_num = $("#confirm_num").val();
 	if (check_id === "") {
 		alert('아이디 공란을 채워주세요.');
-	}else if(check_id.length>10){
-		alert('10글자 오류 한글10/영어10');
-		check_id = check_id.value.substring(0,10)
-		
-		
-	} 
+	}
 	else if(check_email === "") {
 		alert('이메일 공란을 채워주세요.');
 	} 
+		
 	else if(check_password === "") {
 		alert('비밀번호 공란을 채워주세요.');
 	} 
@@ -389,6 +394,11 @@ $("#btn_confirm").click(function(){
 	else{
 		syw.join_Auth();
 	}
+});
+
+$("#btn_check").click(function(){
+	if(!chk(patternId,check_id2, "첫글자는 영문 소문자, 글자 수는4~12자 내로 입력해 주세요."))
+        return false;
 });
 
 
@@ -514,5 +524,8 @@ $("#equip_btn2").click(function(){
 			alert("댓글을 달려면 먼저 로그인을 해주세요");
 		}
 	});
+	
+	
+	
 
 </script>
