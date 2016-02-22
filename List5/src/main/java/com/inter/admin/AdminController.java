@@ -35,7 +35,7 @@ public class AdminController {
 	public String home(){
 		logger.info("AdminController-login() 진입");
 		System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
-		return "admin/login.jsp";
+		return "admin/admin/login.tiles";
 	}
 	
 	
@@ -43,7 +43,7 @@ public class AdminController {
 	@RequestMapping("/main")
 	public String main(){
 		logger.info("AdminController-home() 진입");
-		return "admin/main.jsp";
+		return "admin/admin/main.tiles";
 	}
 	
 	@RequestMapping("/member")
@@ -51,7 +51,7 @@ public class AdminController {
 		logger.info("AdminController-home() 진입");
 		List<MemberVO> members = adminService.getMemberList();
 		model.addAttribute("list", members);
-		return "admin/member.jsp";
+		return "admin/admin/member.tiles";
 	}
 	
 
@@ -59,7 +59,7 @@ public class AdminController {
 	@RequestMapping("/chart")
 	public String chart(){
 		logger.info("AdminController-home() 진입");
-		return "admin/chart.jsp";
+		return "admin/admin/chart.tiles";
 	}
 	
 	@RequestMapping("/board")
@@ -67,7 +67,7 @@ public class AdminController {
 		logger.info("AdminController-home() 진입");
 		List<ArticleVO> articles = articleService.getAllList();
 		model.addAttribute("list", articles);
-		return "admin/board.jsp";
+		return "admin/admin/board.tiles";
 	}
 	
 	

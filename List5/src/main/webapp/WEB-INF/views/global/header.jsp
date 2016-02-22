@@ -8,12 +8,12 @@
 <ul class="nav navbar-nav">
 <!-- not Login -->
 <c:if test="${empty sessionScope.user}">
-<dt>
+<dd>
 <font color="white" size="2em;">인터데이터 게시판 페이지에 오신걸 환영합니다.</font><font style="color: white; margin-left: 15px;" > 손님</font>
 <a  style="color: white; margin-left: 63%;" class="page-scroll" data-toggle="modal" href="#joinModal" >회원가입</a>
 <a  style="color: white; margin-left: 13px;" class="page-scroll" data-toggle="modal" href="#loginModal" >로그인</a>
 <a  style="color: white; margin-left: 13px;" class="page-scroll" data-toggle="modal" href="#findModal" >ID/PW찾기</a>
-</dt>																			
+</dd>																			
 </c:if>
 
 

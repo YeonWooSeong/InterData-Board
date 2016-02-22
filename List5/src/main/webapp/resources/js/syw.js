@@ -68,20 +68,14 @@ var syw = {
 					// 아이디가 이미 존재할경우.
 					if (data.id_fail == "id_fail") {
 						document.getElementById('check_Msg').style.color = "red";
-						document.getElementById('check_Msg').innerHTML = "가입되어있는 아이디입니다.";
+						document.getElementById('check_Msg').innerHTML = "이미 가입되어 있는 아이디입니다.";
 					}
-					
-					 if( !/^[a-z][a-z\d]{3,11}$/.test( $("input[name=join_Idd]").val() ) ) {
-				        	document.getElementById('check_Msg').style.color = "red";
-							document.getElementById('check_Msg').innerHTML = "아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.";  
-				        }
-					 
 					
 					 
 					// 아이디 사용가능할 경우.
 					if (data.id_Confirm == "id_Confirm") {
 						document.getElementById('check_Msg').style.color = "green";
-						document.getElementById('check_Msg').innerHTML = "가능한 아이디입니다.";
+						document.getElementById('check_Msg').innerHTML = "아이디 유효성 체크.";
 					}
 				},
 				error : function() {

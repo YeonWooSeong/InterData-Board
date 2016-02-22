@@ -21,8 +21,8 @@
 	
 	
 	
-	<definition name="admin/*/*.tiles" extends="admin_layout">
-		<put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
+	<definition name="admin/*/*.tiles" extends="layout">
+		<put-attribute name="header" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
  

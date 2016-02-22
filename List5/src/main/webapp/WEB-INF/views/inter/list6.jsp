@@ -24,10 +24,6 @@
                 	<div class="col-md-4" style="width: 300px;">
                         <label></label>
                         <input type="text" class="form-control" placeholder="ID" name=join_Idd id="join_Id" onkeyup="syw.checking_Id()">
-                        
-                          <button type="button" id="btn_check"
-                    style="margin-top:3px; font-size: 12px; width: 100px; border-radius: 10px; float: left;" 
-                    class="btn btn-primary btn-block">중복확인</button>
                     
                         <label style="float: left; color: red;" id="check_Msg">아이디를 입력해주세요 ♬</label>
                     	<div style="height:20px;"></div>
@@ -44,7 +40,11 @@
                         <input type="password" class="form-control" placeholder="password" id="join_Password">
                    		<div style="height:12px;"></div>
                     </div>
-                    
+                    <div class="col-md-4" style="width: 300px;">
+                        <label></label>
+                        <input type="password" class="form-control" placeholder="password Confirm" id="join_Password2">
+                   		<div style="height:12px;"></div>
+                    </div>
                     <div class="col-md-4" style="width: 300px; float: left;">
                         <label></label>
                         <input type="text" class="form-control" placeholder="Name" id="name">
@@ -237,6 +237,143 @@
     </div>
 </div>
 
+<!-- id/pw 찾기 모달 -->
+<!-- Modal -->
+  <div class="modal fade" id="findModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 60%">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Id / Pw 찾기</h4>
+        </div>
+        <div class="modal-body">
+          <p>항목을 선택해 주세요</p>
+        </div>
+        <div class="modal-footer">
+          <button id="findId" type="button" class="btn btn-default" class="page-scroll" data-toggle="modal" data-target="#findIdform" >아이디 찾기</button>
+          <button id="findPw" type="button" class="btn btn-default" class="page-scroll" data-toggle="modal" data-target="#findPwform">비밀번호 찾기</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- 아이디찾기 -->
+
+<div class="modal fade" id="findIdform" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                   아이디 찾기.
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">이름</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" style="width:40%" 
+                        id="inputEmail3"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          for="inputPassword3" >폰번호</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" style="width:40%"
+                            id="inputPassword3" placeholder="Password"/>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+				확인
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 비밀번호 찾기 -->
+<div class="modal fade" id="findPwform" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                   비밀번호 찾기.
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">아이디</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" style="width:40%" 
+                        id="inputId"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          for="inputPassword3" >이메일</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" style="width:40%"
+                            id="inputName"/>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                           >인증번호</label>
+                    <div class="col-sm-10">
+                     <input type="text" class="form-control" style="width:30%"
+                            id="inputConfirmtext"/>
+                        <button id="inputConfirm" type="button" class="btn btn-default" class="page-scroll" data-toggle="modal">인증번호 전송</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+				확인
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 <!-------------------------------------------- 게시판 ----------------------------------------------------->
 <!-- 글쓰기 눌렀을때 -->
 <div id="writeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -327,9 +464,30 @@
 </div>
 
 <script>
+var patternId = /^[a-z][a-z\d]{3,11}$/;
+var patternHangle = /^[가-힣]{2,4}$/;
+var patternEmail =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+var patternName = /^[가-힝]{2,}$/;
+var patternPw = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+var patternPhoneNumber = /^[0-9]{12}$/;
+var patternId = /^[a-z][a-z\d]{3,11}$/;
+var number = /^[0-9]*$/;
+
+var check_id = $("#join_Id").val();
+var check_id2 = document.getElementById('join_Id');
+var check_email = $("#email").val();
+var check_email2 = document.getElementById('email');
+var check_password = $("#join_Password").val();
+var check_password2 = document.getElementById('join_Password');
+var check_password3 = document.getElementById('join_Password2');
+
+var check_name = $("#name").val();
+var check_name2 = document.getElementById('name');
+var check_phone = $("#phone").val();
+var check_phone2 = document.getElementById('phone');
+var check_confirm_num = $("#confirm_num").val();
 function chk(re, e, msg) {
     if (re.test(e.value)) {
-    	alert('사용 가능합니다.')
             return true;
     }
 
@@ -338,51 +496,31 @@ function chk(re, e, msg) {
     e.focus();
     return false;
 }
-var patternId = /^[a-z][a-z\d]{3,11}$/;
-var patternHangle = /^[가-힣]{2,4}$/;
-var patternEmail =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-var patternName = /^[가-힝]{2,}$/;
-var patternPhoneNumber = /^[0-9]{12}$/;
-
-var check_id = $("#join_Id").val();
-var check_id2 = document.getElementById('join_Id');
-
-var check_email = $("#email").val();
-var check_email2 = document.getElementById('email');
-
-var check_password = $("#join_Password").val();
-var check_name = $("#name").val();
-var check_phone = $("#phone").val();
-var check_confirm_num = $("#confirm_num").val();
 //* 회원가입 
 
 //글자수 제한 체크 
 
 
 $("#join").click(function(){
-	if (check_id === "") {
-		alert('아이디 공란을 채워주세요.');
-	}
-	else if(check_email === "") {
-		alert('이메일 공란을 채워주세요.');
-	} 
-		
-	else if(check_password === "") {
-		alert('비밀번호 공란을 채워주세요.');
-	} 
-	else if(check_name === "") {
-		alert('이름 공란을 채워주세요.');
-	} 
-	else if(check_phone === "") {
-		alert('전화번호 공란을 채워주세요.');
-	} 
-	else if(check_confirm_num === "") {
-		alert('공란을 채워주세요.');
-	} else {
-		syw.join();	
-	}
-	
-	
+	var check_confirm_num = $("#confirm_num").val();
+	if(!chk(patternId,check_id2, "아이디는 시작은 영문으로만, 첫글자는 영문 소문자, 4~12자 입력할것!"))
+		return false;
+	 if(!chk(patternEmail,check_email2, "이메일 형식에 어긋납니다."))
+         return false;
+	 if(!chk(patternPw,check_password2,"비밀번호는 영문,숫자 혼용하여 6~20자 이내로 입력해주세요."))
+		 return false;
+	 if(check_password2.value!=check_password3.value&&check_password3.value!=check_password2.value) {
+         alert("비밀번호가 일치하지 않습니다.");
+  }
+	 if(!chk(patternName,check_name2,"이름은 한글로만 2글자 이상을 기입해 주세요"))
+         return false;
+	 if(!chk(number,check_phone2,"번호는 숫자만 입력할 수 있습니다."))
+		 return false;
+	 else if(check_confirm_num === "") {
+			alert('인증번호를 입력해 주세요.');
+		} else {
+			syw.join();	
+		}
 });
 
 /* 이메일 인증 */
@@ -396,10 +534,7 @@ $("#btn_confirm").click(function(){
 	}
 });
 
-$("#btn_check").click(function(){
-	if(!chk(patternId,check_id2, "첫글자는 영문 소문자, 글자 수는4~12자 내로 입력해 주세요."))
-        return false;
-});
+
 
 
 /*로그인*/
@@ -448,7 +583,7 @@ $("#write_close_btn").click(function() {
 });
 
 
-
+/*삭제버튼*/
 $("#delete_btn").click(function(){
 	$.ajax(context + "/article/delete",{
 		data : {
@@ -466,7 +601,7 @@ $("#delete_btn").click(function(){
 	});
 	location.reload();
 });
-
+/*수정버튼*/
 $("#equip").click(function(){
 	$.ajax(context + "/article/read",{
 		data : {
@@ -526,6 +661,14 @@ $("#equip_btn2").click(function(){
 	});
 	
 	
+	//id 찾기
+	$("#findId").click(function(e) {
+		$("#findId").attr("data-target","#findIdform");	
+	});
 	
+	//pw 찾기
+		$("#findPw").click(function(e) {
+		$("#findPw").attr("data-target","#findPwform");	
+	});
 
 </script>

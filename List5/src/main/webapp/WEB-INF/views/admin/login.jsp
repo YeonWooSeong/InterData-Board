@@ -9,7 +9,7 @@
 <script src="${admin_js}/lumino.glyphs.js"></script>
 
 <div style="margin-top:10%; margin-left:45%;">
-	<h1>[ Admin ]</h1>
+	<h1 style="margin-right: 20%">[ Admin ]</h1>
 	<br />
 	<label for="id" style="display:block;" >아이디</label>
 	<input id="id" name="id" type="text" />
@@ -23,6 +23,9 @@
 		관리자 계정 : choa <br />
 		비 밀 번 호 : 1  
 </div>
+
+
+
 <script>
 	$(function() {
 		$("#confirm").click(function() {
