@@ -287,7 +287,7 @@
                               for="inputEmail3">이름</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" style="width:40%" 
-                        id="inputEmail3"/>
+                        id="findIdNameText"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -295,14 +295,14 @@
                           for="inputPassword3" >폰번호</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" style="width:40%"
-                            id="inputPassword3" placeholder="Password"/>
+                            id="findIdPhoneNumberText" placeholder="'-'를 빼고 입력해주세요"/>
                     </div>
                   </div>
                 </form>
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" id="btn_findId">
 				확인
                 </button>
             </div>
@@ -336,7 +336,7 @@
                               for="inputEmail3">아이디</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" style="width:40%" 
-                        id="inputId"/>
+                        id="findPwIdText"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -344,7 +344,7 @@
                           for="inputPassword3" >이메일</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" style="width:40%"
-                            id="inputName"/>
+                            id="findPwEmailText"/>
                     </div>
                   </div>
                    <div class="form-group">
@@ -352,15 +352,15 @@
                            >인증번호</label>
                     <div class="col-sm-10">
                      <input type="text" class="form-control" style="width:30%"
-                            id="inputConfirmtext"/>
-                        <button id="inputConfirm" type="button" class="btn btn-default" class="page-scroll" data-toggle="modal">인증번호 전송</button>
+                            id="findPwConfirmText"/>
+                        <button id="findPwConfirmButton" type="button" class="btn btn-default" class="page-scroll" data-toggle="modal">인증번호 전송</button>
                     </div>
                   </div>
                 </form>
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" id="btn_findPw">
 				확인
                 </button>
             </div>
@@ -666,9 +666,43 @@ $("#equip_btn2").click(function(){
 		$("#findId").attr("data-target","#findIdform");	
 	});
 	
+	$("#btn_findId").click(function() {
+		$.ajax(context + "/member/find_id",{
+			data : { "name" : $("#findIdNameText").val(),
+					"phoneNumber" : $("#findIdPhoneNumberText").val()
+			},
+			type : "post",
+			success : function(data) {
+				if (data.member2 !=null) {
+					userid = data.member2.id;
+					email = data.member2.email;
+					name = data.memeber2.name;
+					alert(name+'님의 아이디는 = '+userid+'  이며,  이메일은 = '+email+' 입니다.');
+					
+				}else{
+					alert('이름과 핸드폰 번호를 다시 입력해주세요.')
+				}
+			},
+			error : function() {
+				alert('이름과 핸드폰 번호를 다시 입력해주세요. error')
+			}
+		})
+	});
+	
+	
+	//pw 찾기
+	$("#btn_findPw").click(function() {
+		
+		
+		
+		
+	});
+	
+	
+	
+	
 	//pw 찾기
 		$("#findPw").click(function(e) {
 		$("#findPw").attr("data-target","#findPwform");	
 	});
-
 </script>

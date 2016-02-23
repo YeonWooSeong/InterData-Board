@@ -198,6 +198,9 @@ var syw = {
 				}
 			});
 		},
+		
+		
+		
 		testsyw : function() {
 			var table = '<div class="testsyW" id="testsyW">테스트페이지</div>';
 				$("#temp-inter").html(table);

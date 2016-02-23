@@ -23,5 +23,7 @@ public interface MemberService {
 	// D : 삭제 (회원탈퇴)
 	public int remove(String id);
 
+	public MemberVO findId(String name, String phoneNumber);  //아이디 찾기.
+
 	
 }

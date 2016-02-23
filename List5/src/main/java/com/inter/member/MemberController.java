@@ -40,6 +40,7 @@ public class MemberController {
  		    @RequestParam("password")String pw,
  		    HttpSession session,
 		    Model model){
+		
 		logger.info("멤버컨트롤러 login() - 진입");
 		logger.info("유저아이디 : {}", id);
 		logger.info("유저 비밀번호: {}", pw);
@@ -52,6 +53,26 @@ public class MemberController {
 			logger.info("로그인 실패!!!!!!!!");
 		}
 }
+	/*id찾기*/
+	@RequestMapping(value="/member/find_id", method=RequestMethod.POST)
+	public void findId(
+			@RequestParam("name")String name,
+ 		    @RequestParam("phoneNumber")String phoneNumber,
+		    Model model){
+		
+		logger.info("멤버컨트롤러 login() - 진입");
+		logger.info("유저 이름 : {}", name);
+		logger.info("유저 전화번호: {}", phoneNumber);
+		member = service.findId(name, phoneNumber);
+		if (member != null) {
+			logger.info("정보 찾기 성공");
+			model.addAttribute("member2", member);
+		} else {
+			logger.info("정보 안맞음");
+		}
+}
+	
+	
 	// 호ㅣ원가입
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
 	public Model joinMember(

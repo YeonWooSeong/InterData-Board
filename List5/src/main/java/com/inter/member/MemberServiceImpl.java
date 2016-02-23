@@ -101,6 +101,32 @@ public class MemberServiceImpl  implements MemberService{
 		}
 	}
 	
+	
+	@Override
+	public MemberVO findId(String name, String phoneNumber) {
+		logger.info("MemberServiceImpl : login");
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		MemberVO loginMember = mapper.selectOneByName(name);
+		if (loginMember != null) {
+			System.out.println("로그인해서 나온 아이디?? "+loginMember.getId());
+			
+			if (loginMember.getName() ==  null) {
+				System.out.println("이름 없음");
+				return null;
+			} 
+			if (loginMember.getPhone().equals(phoneNumber)) {
+				System.out.println("이름과 전화번호가 일치한다.");
+				return loginMember;
+			}else{
+				System.out.println("X 틀림.");
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+	
+	
 	// 회원정보 변경
 	@Override
 	public int change(MemberVO member) {
