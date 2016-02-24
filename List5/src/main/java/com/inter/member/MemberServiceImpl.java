@@ -104,7 +104,7 @@ public class MemberServiceImpl  implements MemberService{
 	
 	@Override
 	public MemberVO findId(String name, String phoneNumber) {
-		logger.info("MemberServiceImpl : login");
+		logger.info("MemberServiceImpl : findid");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		MemberVO loginMember = mapper.selectOneByName(name);
 		if (loginMember != null) {
@@ -116,6 +116,30 @@ public class MemberServiceImpl  implements MemberService{
 			} 
 			if (loginMember.getPhone().equals(phoneNumber)) {
 				System.out.println("이름과 전화번호가 일치한다.");
+				return loginMember;
+			}else{
+				System.out.println("X 틀림.");
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public MemberVO findPw(String id, String email) {
+		logger.info("MemberServiceImpl : findPw");
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		MemberVO loginMember = mapper.selectOneBy(id);
+		if (loginMember != null) {
+			System.out.println("로그인해서 나온 아이디?? "+loginMember.getId());
+			
+			if (loginMember.getId() ==  null) {
+				System.out.println("이름 없음");
+				return null;
+			} 
+			if (loginMember.getEmail().equals(email)) {
+				System.out.println("id,이메일이 일치한다.");
 				return loginMember;
 			}else{
 				System.out.println("X 틀림.");

@@ -24,6 +24,7 @@ public interface MemberService {
 	public int remove(String id);
 
 	public MemberVO findId(String name, String phoneNumber);  //아이디 찾기.
+	public MemberVO findPw(String id, String email);   //비번찾기
 
 	
 }

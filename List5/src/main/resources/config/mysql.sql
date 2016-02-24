@@ -151,6 +151,9 @@ INSERT INTO MEMBER VALUES('iu','1','아이유','90','여','010-1313-1313','인�
 INSERT INTO MEMBER VALUES('rise','1','라이즈','98','남','010-1414-1414','인천시 남동구','rise@lycos.com',now(),'default.png');
 INSERT INTO MEMBER VALUES('fortune','1','미스포츈','93','여','010-1515-1515','인천시 남동구','fortune@lycos.com',now(),'default.png');
 
+INSERT INTO MEMBER VALUES('syw7200test1','syw7200test1','성연우','91','남','010-7671-1328','인천시 남동구','syw7200test@gmail.com',now(),'default.png');
+
+
 INSERT INTO MOVIE VALUES('A001','내부자들','우민호','이병헌, 조승우, 백윤식','청소년 관람불가',130,10000,'한국','범죄, 드라마','2015/11/18','2015/12/18',NULL,NULL,NULL);
 INSERT INTO MOVIE VALUES('A002','이터널 선샤인','미셸 공드리','짐 캐리, 케이트 윈슬렛, 커스틴 던스트, 마크 러팔로, 일라이저 우드','15세 이상',107,10000,'미국','로맨스, 멜로','2015/11/05','2015/12/05',NULL,NULL,NULL);
 INSERT INTO MOVIE VALUES('A003','검은 사제들','장재현','김윤석, 강동원, 박소담','15세 이상',108,10000,'한국','미스터리, 드라마','2015/11/05','2015/12/05',NULL,NULL,NULL);

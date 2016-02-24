@@ -201,6 +201,24 @@ var syw = {
 		
 		
 		
+		//pw email 인증
+		pwEmail : function() {
+			$.ajax(context + "/member/pwEmail",{
+				data : {"id" : $("#findPwIdText").val(),
+						"e_mail" :$("#findPwEmailText").val(),
+				},
+				type : "post",
+				success : function(data) {
+					if(data.success == "success"){
+						alert("인증번호가 이메일로 발송되었습니다.");
+					}
+				},
+				error : function() {
+					alert('이메일을 입력하고 다시 시도해 주세요.');
+				}
+			});
+		},
+		
 		testsyw : function() {
 			var table = '<div class="testsyW" id="testsyW">테스트페이지</div>';
 				$("#temp-inter").html(table);

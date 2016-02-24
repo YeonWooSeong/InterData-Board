@@ -60,7 +60,7 @@ public class MemberController {
  		    @RequestParam("phoneNumber")String phoneNumber,
 		    Model model){
 		
-		logger.info("멤버컨트롤러 login() - 진입");
+		logger.info("멤버컨트롤러 findId() - 진입");
 		logger.info("유저 이름 : {}", name);
 		logger.info("유저 전화번호: {}", phoneNumber);
 		member = service.findId(name, phoneNumber);
@@ -71,6 +71,58 @@ public class MemberController {
 			logger.info("정보 안맞음");
 		}
 }
+	
+	/*pw찾기*/
+	@RequestMapping("/member/find_pw")
+	public void findPw(
+			@RequestParam("id")String id,
+			@RequestParam("email")String email,
+			Model model){
+
+		logger.info("멤버컨트롤러 findPw() - 진입");
+		logger.info("유저 id : {}", id);
+		logger.info("유저 pw: {}", email);
+		member = service.findPw(id, email);
+		if (member != null) {
+			logger.info("pw 찾기 성공");
+			model.addAttribute("member3", member);
+		} else {
+			logger.info("정보 안맞음(pw)");
+		}
+		
+	}
+	
+	
+	/*PW  email*/
+	@RequestMapping("/member/pwEmail")
+	public Model pwEmail (
+			@RequestParam("id")String id,
+			@RequestParam("e_mail")String e_mail,
+ 		    Model model) throws Exception {
+			Email email = new Email();
+		logger.info("멤버컨트롤러 joinAuth() - 진입");
+		logger.info("넘어온 id는?"+id);
+		logger.info("넘어온 email은?"+e_mail);
+       
+			auth_Num = (int) (Math.random()*999999) + 100000;
+        	String reciver = e_mail;
+        	String subject = "Interdata 비밀번호 찾기 메일인증.";
+        	String content = "비밀번호 변경 인증 메일입니다.  "+id+"님, 인증번호 메일입니다.^ㅁ^     "+id+" 님의 비밀번호 찾기 인증번호는 "+auth_Num+"입니다.";
+        	email.setReciver(reciver);
+            email.setSubject(subject);
+            email.setContent(content);
+            emailSender.sendMail(email);
+            model.addAttribute("success", "success");
+	
+        return model;
+    }
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// 호ㅣ원가입

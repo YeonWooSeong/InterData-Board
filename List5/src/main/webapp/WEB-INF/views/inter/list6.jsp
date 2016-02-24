@@ -475,16 +475,23 @@ var number = /^[0-9]*$/;
 
 var check_id = $("#join_Id").val();
 var check_id2 = document.getElementById('join_Id');
+var check_id3 = document.getElementById('findPwIdText'); //pw 찾기
+
 var check_email = $("#email").val();
 var check_email2 = document.getElementById('email');
+var check_email3 = document.getElementById('findPwEmailText'); // email 찾기
+
 var check_password = $("#join_Password").val();
 var check_password2 = document.getElementById('join_Password');
 var check_password3 = document.getElementById('join_Password2');
 
 var check_name = $("#name").val();
 var check_name2 = document.getElementById('name');
+var check_name3 = document.getElementById('findIdNameText');  //id 찾기 
+
 var check_phone = $("#phone").val();
 var check_phone2 = document.getElementById('phone');
+var check_phone3 = document.getElementById('findIdPhoneNumberText');  //id 찾기
 var check_confirm_num = $("#confirm_num").val();
 function chk(re, e, msg) {
     if (re.test(e.value)) {
@@ -640,6 +647,8 @@ $("#equip_btn2").click(function(){
 })
 	var index = 1;
 	$("#reply_btn").click(function() {
+		
+		
 		if(userid != null){
 			$.ajax(context + "/article/reply ",{
 				data : {
@@ -667,6 +676,11 @@ $("#equip_btn2").click(function(){
 	});
 	
 	$("#btn_findId").click(function() {
+		 if(!chk(patternName,check_name3,"이름은 한글로만 2글자 이상을 기입해 주세요"))
+	         return false;
+		 if(!chk(number,check_phone3,"번호는 숫자만 입력할 수 있습니다."))
+			 return false;
+		
 		$.ajax(context + "/member/find_id",{
 			data : { "name" : $("#findIdNameText").val(),
 					"phoneNumber" : $("#findIdPhoneNumberText").val()
@@ -676,8 +690,8 @@ $("#equip_btn2").click(function(){
 				if (data.member2 !=null) {
 					userid = data.member2.id;
 					email = data.member2.email;
-					name = data.memeber2.name;
-					alert(name+'님의 아이디는 = '+userid+'  이며,  이메일은 = '+email+' 입니다.');
+					
+					alert(data.member2.name+' 님의  아이디는 = ※      '+userid+'  이며, 해당 이메일은  = ※      '+email+' 입니다.');
 					
 				}else{
 					alert('이름과 핸드폰 번호를 다시 입력해주세요.')
@@ -689,20 +703,53 @@ $("#equip_btn2").click(function(){
 		})
 	});
 	
-	
 	//pw 찾기
+	$("#findPw").click(function(e) {
+	$("#findPw").attr("data-target","#findPwform");	
+});
+	
+	//pw 찾기 버튼 클릭시
 	$("#btn_findPw").click(function() {
-		
-		
+		if(!chk(patternId,check_id3, "아이디는 시작은 영문으로만, 첫글자는 영문 소문자, 4~12자 입력할것!"))
+			return false;
+		 if(!chk(patternEmail,check_email3, "이메일 형식에 어긋납니다."))
+	         return false;
+			
+			$.ajax(context + "/member/find_pw",{
+				data : { "id" : $("#findPwIdText").val(),
+						"email" : $("#findPwEmailText").val()
+				},
+				type : "post",
+				success : function(data) {
+					if (data.member3 !=null) {
+						userid = data.member3.id;
+						alert(userid+'님의 비밀번호는  ※   '+data.member3.password+ ' 입니다.')
+					}else{
+						alert('아이디와 이메일을 다시 확인해 주세요.')
+					}
+				},
+				error : function() {
+					alert('아이디와 이메일을 다시 확인해 주세요.error')
+				}
+			})
 		
 		
 	});
 	
-	
-	
-	
-	//pw 찾기
-		$("#findPw").click(function(e) {
-		$("#findPw").attr("data-target","#findPwform");	
+	/* pw 이메일 인증 */
+	$("#findPwConfirmButton").click(function(){
+		 if(!chk(patternEmail,check_email3, "이메일 형식에 어긋납니다."))
+	         return false;
+		var check_Confirm_Email = $("#findPwEmailText").val();
+		if(check_Confirm_Email === ""){
+			alert('pw 이메일 입력란을 채워주세요.');
+		}
+		else{
+			syw.pwEmail();
+		}
 	});
+
+	
+	
+
 </script>
