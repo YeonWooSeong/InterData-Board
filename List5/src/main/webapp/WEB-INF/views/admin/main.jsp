@@ -60,7 +60,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">방문자 수</div>
-					<iframe src="https://calendar.google.com/calendar/embed?src=atoem2gqk6m2b38bijnko0b3ho%40group.calendar.google.com&ctz=Asia/Seoul" style="padding: 10px; border: 0;" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+					<iframe src="https://calendar.google.com/calendar/embed" style="padding: 10px; border: 0;" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
 				</div>
 			</div>
 		</div><!--/.row-->	
