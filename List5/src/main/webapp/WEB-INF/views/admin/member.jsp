@@ -27,7 +27,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="${context}/admin/main"><span>MTB</span>관리자</a>
+				<a class="navbar-brand" href="${context}/admin/main"><span>InterData</span>관리자</a>
 				<a id="admin_logout" class="navbar-brand" href="#" style="float:right;">로그아웃</a>
 			</div>
 							
@@ -43,9 +43,7 @@
 		<ul class="nav menu">
 			<li class="active"><a href="${context}/admin/main"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> 홈</a></li>
 			<li><a href="${context}/admin/member"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> 회원관리</a></li>
-			<li><a href="${context}/admin/movie"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> 영화관리</a></li>
 			<li><a href="${context}/admin/board"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> 게시판관리</a></li>
-			<li><a href="${context}/admin/chart"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> 차트</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		

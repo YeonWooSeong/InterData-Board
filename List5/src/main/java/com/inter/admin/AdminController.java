@@ -149,7 +149,7 @@ public class AdminController {
 	
 	@RequestMapping("/notice")
 	public String notice() {
-		return "admin/notice.jsp";
+		return "admin/admin/notice.tiles";
 	}
 	
 	@RequestMapping("/write_notice")
